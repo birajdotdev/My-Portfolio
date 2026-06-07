@@ -311,32 +311,36 @@ p {
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 100px 16px;
 }
 #skills .skills-header {
   margin-bottom: 50px;
 }
 #skills .all-skills {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  align-items: flex-start;
-  gap: 25px 15px;
+  align-items: stretch;
+  gap: 16px;
   box-shadow: 0px 0px 18px 0 #0000002c;
-  padding: 20px;
-  width: 85%;
+  padding: 16px;
+  width: min(100%, 920px);
   border-radius: 10px;
   background-color: rgba(241, 241, 241, 0.2);
 }
 #skills .skill-item {
+  display: flex;
+  min-height: 120px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   box-shadow: 0px 0px 9px 0 #0000002c;
   border-radius: 10px;
-  padding: 10px;
+  padding: 12px 8px;
   cursor: pointer;
   transition: 0.3s ease;
   transition-property: background-color, box-shadow;
-  flex: 1;
 }
 #skills .skill-item:hover {
   background-color: rgba(65, 76, 88, 0.05);
@@ -344,13 +348,23 @@ p {
 }
 #skills .skill-item h1 {
   font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
 }
 #skills .skill-item img {
-  width: 60px;
-  height: 80px;
+  width: clamp(52px, 14vw, 72px);
+  height: clamp(52px, 14vw, 72px);
   object-fit: contain;
 }
 /* End of Skills section */
+
+@media only screen and (min-width: 480px) {
+  #skills .all-skills {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 /* Education Section */
 #education .education {
@@ -617,6 +631,24 @@ p {
   }
   /* End of Hero */
 
+  /* Skills */
+  #skills .all-skills {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 16px;
+    padding: 20px;
+  }
+  #skills .skill-item {
+    min-height: 130px;
+  }
+  #skills .skill-item h1 {
+    font-size: 1.5rem;
+  }
+  #skills .skill-item img {
+    width: 72px;
+    height: 72px;
+  }
+  /* End of Skills */
+
   /* Education */
   #education .education-item {
     display: flex;
@@ -694,6 +726,12 @@ p {
 }
 /* End of Media Queries for Tablet */
 
+@media only screen and (min-width: 992px) {
+  #skills .all-skills {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 /* Media Queries for Desktop */
 @media only screen and (min-width: 1200px) {
   /* Header */
@@ -717,6 +755,11 @@ p {
     display: none;
   }
   /* End of header */
+  /* Skills */
+  #skills .all-skills {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  /* End of Skills */
   /* Contacts */
   #contact .contact-item {
     flex-direction: row;
